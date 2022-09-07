@@ -26,15 +26,20 @@
 					<article class="product-detail-info">
 						<h2 class="product-detail-title"><%= product.name %> </h2>
 						
+						<% if (+product.discount !== 0) { %>
 							<p class="product-detail-price small">
-								<span> $ <%= product.price %> </span>
+								<span>$<%= toThousand(product.price) %></span>
 								/
-								<b><%= product.discount %> % OFF</b>
+								<b><%= product.discount %>% OFF</b>
 							</p>
 							<p class="product-detail-price">
-								$ <%= (product.price - (product.price * product.discount) / 100).toFixed(2) %>
+								$<%= toThousand(product.price - (product.price * product.discount) / 100) %>
 							</p>
-					
+						<% } else { %>
+							<p class="product-detail-price">
+								$<%= toThousand(product.price) %>
+							</p>
+						<% } %>
 						<ul class="actions-list">
 							<li>
 								<i class="fas fa-credit-card"></i>
