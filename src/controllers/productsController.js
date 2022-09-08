@@ -56,7 +56,7 @@ const controller = {
 	edit: (req, res) => {
 		let productToEdit= readProducts().find(product=> product.id === +req.params.id )
 		return res.render('product-edit-form',{
-			productToEdit
+			productToEdit, toThousand
 		})
 	},
 	// Update - Method to update
